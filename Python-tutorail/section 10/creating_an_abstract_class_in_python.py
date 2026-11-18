@@ -102,3 +102,135 @@ a.eject()
 a.move()
 a.repair()
 
+
+#? exercises
+print("*"*30, "\n", "*"*30)
+
+# *1
+class Employee:
+
+    @abstractmethod
+    def calculate_salary(self):
+        pass
+
+class HourlyEmployee(Employee):
+
+    def __init__(self, value):
+        self.value = value
+
+    def calculate_salary(self):
+        return self.value + ((self.value//100)*10)
+
+class SalariedEmployee(Employee):
+
+    def __init__(self, value):
+        self.value = value
+
+    def calculate_salary(self):
+        return self.value + ((self.value//100)*5)
+
+
+# *2
+
+class Car:
+
+    @abstractmethod
+    def start(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+
+class SportsCar(Car):
+
+    def __init__(self, model):
+        self.model = model
+
+    def start(self):
+        print("start by keylass")
+
+    def stop(self):
+        print("stop by Disc brake")
+
+
+class Sedan(Car):
+
+    def __init__(self, model):
+        self.model = model
+
+    def start(self):
+        print("start by key")
+
+    def stop(self):
+        print("stop by Cup brake")
+
+
+# *3
+
+class Person:
+
+    def __init__(self, name, age, role):
+        self.name = name
+        self.age = age
+        self.role = role
+
+    @abstractmethod
+    def greet(self):
+        pass
+
+    @abstractmethod
+    def introduce(self):
+        pass
+
+
+class Student(Person):
+    def __init__(self, name, age, role):
+        super().__init__(name, age, role)
+
+    def greet(self):
+        print(f"hi {self.name}")
+
+    def introduce(self):
+        print(f"whats your age? {self.age}" \
+        f"Whats your role in school? its {self.role}")
+
+
+class Techer(Person):
+    def __init__(self, name, age, role):
+        super().__init__(name, age, role)
+
+    def greet(self):
+        print(f"hi {self.name}")
+
+    def introduce(self):
+        print(f"whats your age? {self.age}" \
+        f"Whats your role in school? its {self.role}")
+
+
+# test all
+# 1
+h = HourlyEmployee(1000)
+s = SalariedEmployee(1000)
+print(h.calculate_salary(), "and", s.calculate_salary())
+
+# 2
+c_sp = SportsCar("banz AMG")
+c_se = Sedan("Honda acord")
+c_sp.start()
+c_sp.stop()
+
+c_se.start()
+c_se.stop()
+
+# 3
+s = Student("ali", 13, "student")
+t = Techer("raza", 35, "techer")
+
+s.greet()
+s.introduce()
+
+t.greet()
+t.introduce()
+
